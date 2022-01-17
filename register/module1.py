@@ -26,7 +26,7 @@ def signin():
 if user in users and users.index(user) == passwords.index(password):
      print ("Olete sisseloginud!")
 else:
-     print("User doesn't exist or wrong password!")
+     print("Kasutajanimi ei leitud või vale parool!")
 def random():
     str0=".,"
     str1 = '0123456789'
