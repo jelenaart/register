@@ -24,7 +24,7 @@ def signin():
     user=input("Palun teie kasutajanimi: ")
     password=input("Palun teie parool: ")
 if user in users and users.index(user) == passwords.index(password):
-     print ("Login successful!")
+     print ("Olete sisseloginud!")
 else:
      print("User doesn't exist or wrong password!")
 def random():
@@ -37,8 +37,8 @@ def random():
     print(ls)
     login = ''.join([random.choice(ls) for x in range(12)])
     passw = ''.join([random.choice(ls) for x in range(12)])
-    print("Here is ur password and login")
-    print("login: " ,login, "\npassword: " ,passw)
+    print("Siin on teie kasutajanimi ja parool!")
+    print("kasutajanimi: " ,login, "parool: " ,passw)
 while valik!= "quit":
      valik()
 
