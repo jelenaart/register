@@ -9,7 +9,7 @@ def signup(users:list,passwords:list):
         password=input("Valige salasona registreerimiseks: ")
         control=passcontrol(password)
         while control==False:
-            print("Teie salasõna peaks sisaldama alltähed, suured tähed, numbrid")
+            print("Teie salasõna peab sisaldama alltähed, suured tähed, numbrid")
             password=input("Palun teie parool: ")
             control=passcontrol(password)
             if control==True:
@@ -25,7 +25,7 @@ def signin(users:list,passwords:list):
     user=input("Palun teie kasutajanimi: ")
     password=input("Palun teie parool: ")
     if user in users and users.index(user) == passwords.index(password):
-         print ("Olete sisseloginud!")
+         print ("Olete sisseloginud!\nTere tulemast!")
     else:
          print("Kasutajanimi ei leitud või vale parool!")
 def ran(passwords:list):
@@ -41,7 +41,7 @@ def ran(passwords:list):
     print("Siin on teie kasutajanimi ja parool!")
     print("kasutajanimi: " ,login, "parool: " ,passw)
     return passw,login
-def passcontrol():
+def passcontrol(passwords:list):
     passcontrol=list(passwords)
     p=False
     for i in passcontrol:
@@ -54,3 +54,4 @@ def passcontrol():
         if i.islower():
             p=True
     return p
+
