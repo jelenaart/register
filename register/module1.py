@@ -1,18 +1,19 @@
-users=["biba"]
-passwords=["boba"]
-valik=""
-valik=int(input("Palun valige sisselogimise viis (1-signup), (2-signin), (3-random), (4-quit)"))
-if valik==1:
-    signup()
-elif valik==2:
-    signin()
-elif valik==3:
-    random()
-elif valik==4:
-    quit
-def signup():
-    user=input("Valige kasutajanimi: ")
-    password=input("Valige salasona: ")
+def signup(users:list,passwords:list):
+    user=input("Valige kasutajanimi registreerimiseks: ")
+    print("Kas te soovite ise parooli valida(1) või genereerida(2)?")
+    valik=input()
+    if valik=="2":
+        password=ran()
+        print(f"Teie genereeritud parool on: {password}")
+    elif valik=="1":
+        password=input("Valige salasona registreerimiseks: ")
+        control=passcontrol(password)
+        while control==False:
+            print("Teie salasõna peaks sisaldama alltähed, suured tähed, numbrid")
+            password=input("Palun teie parool: ")
+            control=passcontrol(password)
+            if control==True:
+                break
     if user in users:
         print("See kasutaja on juba registreeritud!")
     else:
@@ -20,14 +21,14 @@ def signup():
         passwords.append(password)
         print("Kasutajanimi: ", user)
         print("Parool: ", password)
-def signin():
+def signin(users:list,passwords:list):
     user=input("Palun teie kasutajanimi: ")
     password=input("Palun teie parool: ")
-if user in users and users.index(user) == passwords.index(password):
-     print ("Olete sisseloginud!")
-else:
-     print("Kasutajanimi ei leitud või vale parool!")
-def random():
+    if user in users and users.index(user) == passwords.index(password):
+         print ("Olete sisseloginud!")
+    else:
+         print("Kasutajanimi ei leitud või vale parool!")
+def ran(passwords:list):
     str0=".,"
     str1 = '0123456789'
     str2 = 'qwertyuiopasdfghjklzxcvbnm'
@@ -35,11 +36,21 @@ def random():
     str4 = str0+str1+str2+str3
     ls = list(str4)
     print(ls)
-    login = ''.join([random.choice(ls) for x in range(12)])
-    passw = ''.join([random.choice(ls) for x in range(12)])
+    login = ''.join([ran.choice(ls) for x in range(12)])
+    passw = ''.join([ran.choice(ls) for x in range(12)])
     print("Siin on teie kasutajanimi ja parool!")
     print("kasutajanimi: " ,login, "parool: " ,passw)
-while valik!= "quit":
-     valik()
-
-
+    return passw,login
+def passcontrol():
+    passcontrol=list(passwords)
+    p=False
+    for i in passcontrol:
+        if i.isdigit():
+            p=True
+        if i.isalpha():
+            p=True
+        if i.isupper():
+            p=True 
+        if i.islower():
+            p=True
+    return p
